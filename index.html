@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Xipermine</title>
 
+<link rel="icon" type="image/png" href="logoxipermine.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
 
 <style>
@@ -18,7 +19,6 @@ body {
   overflow-x: hidden;
 }
 
-/* partículas */
 body::before {
   content: "";
   position: fixed;
@@ -71,22 +71,6 @@ h1 {
 
 .subtitle {
   color: #cbd5f5;
-}
-
-.play-btn {
-  margin-top: 20px;
-  background: linear-gradient(135deg,#facc15,#eab308);
-  border: none;
-  padding: 15px 40px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.play-btn:hover {
-  transform: scale(1.08);
 }
 
 .server-box {
@@ -161,19 +145,17 @@ button.copy:hover {
   <h1>XIPERMINE</h1>
   <p class="subtitle">El mejor Survival Custom</p>
 
-  <button class="play-btn" onclick="copyIP('play.xipermine.net')">JUGAR AHORA</button>
-
   <div class="server-box">
     <h3>Conéctate al servidor</h3>
 
     <p>Java Edition</p>
 
     <div class="ip-row">
-      <div class="ip">play.xipermine.net</div>
-      <button class="copy" onclick="copyIP('play.xipermine.net')">Copiar</button>
+      <div class="ip">mc.xipermine.lat</div>
+      <button class="copy" onclick="copyIP('mc.xipermine.lat')">Copiar</button>
     </div>
 
-    <div class="online" id="players">Jugadores online: cargando...</div>
+    
   </div>
 
 </header>
@@ -215,11 +197,7 @@ function copyIP(ip) {
   setTimeout(() => toast.style.opacity = "0", 2500);
 }
 
-// fake contador (puedes conectar API real luego)
-setInterval(() => {
-  const random = Math.floor(Math.random()*50)+10;
-  document.getElementById("players").innerText = "Jugadores online: " + random;
-}, 3000);
+
 </script>
 
 </body>
