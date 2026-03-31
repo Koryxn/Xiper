@@ -16,23 +16,6 @@ body {
   background-size: cover;
   background-position: center;
   color: white;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(white 1px, transparent 1px);
-  background-size: 50px 50px;
-  opacity: 0.05;
-  animation: moveStars 60s linear infinite;
-}
-
-@keyframes moveStars {
-  from { transform: translate(0,0); }
-  to { transform: translate(-500px,-500px); }
 }
 
 header {
@@ -50,12 +33,18 @@ header {
 }
 
 .top-buttons a {
-  background: #facc15;
+  background: linear-gradient(135deg,#facc15,#eab308);
   color: black;
-  padding: 10px 15px;
-  border-radius: 10px;
+  padding: 10px 18px;
+  border-radius: 12px;
   text-decoration: none;
   font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  transition: 0.2s;
+}
+
+.top-buttons a:hover {
+  transform: scale(1.08);
 }
 
 .logo {
@@ -75,7 +64,7 @@ h1 {
 
 .server-box {
   margin: 40px auto;
-  max-width: 650px;
+  max-width: 700px;
   background: rgba(2,6,23,0.85);
   border: 2px solid #facc15;
   border-radius: 20px;
@@ -94,6 +83,12 @@ h1 {
   font-weight: 600;
 }
 
+.copy-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 button.copy {
   border: 2px solid #facc15;
   background: transparent;
@@ -101,16 +96,12 @@ button.copy {
   padding: 8px 15px;
   border-radius: 10px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 button.copy:hover {
   background: #facc15;
   color: black;
-}
-
-.online {
-  margin-top: 10px;
-  color: #22c55e;
 }
 
 .section {
@@ -123,11 +114,16 @@ button.copy:hover {
   color: #facc15;
 }
 
+.section h3 {
+  margin-top: 30px;
+}
+
 .command {
   background: rgba(2,6,23,0.8);
   padding: 15px;
   margin: 10px 0;
   border-radius: 10px;
+  border: 1px solid rgba(250,204,21,0.2);
 }
 
 </style>
@@ -137,8 +133,8 @@ button.copy:hover {
 <header>
 
   <div class="top-buttons">
-    <a href="https://discord.gg/28N6Ya8JSR" target="_blank">Discord</a>
-    <a href="https://tienda.xipermine.lat" target="_blank">Tienda</a>
+    <a href="https://discord.gg/28N6Ya8JSR" target="_blank">💬 Discord</a>
+    <a href="https://tienda.xipermine.lat" target="_blank">🛒 Tienda</a>
   </div>
 
   <img src="logoxipermine.png" class="logo">
@@ -152,10 +148,11 @@ button.copy:hover {
 
     <div class="ip-row">
       <div class="ip">mc.xipermine.lat</div>
-      <button class="copy" onclick="copyIP('mc.xipermine.lat')">Copiar</button>
+      <div class="copy-box">
+        <button class="copy" onclick="copyIP('mc.xipermine.lat')">Copiar IP</button>
+      </div>
     </div>
 
-    
   </div>
 
 </header>
@@ -163,25 +160,41 @@ button.copy:hover {
 <div class="section">
   <h2>📘 Tutorial</h2>
 
-  <p>Bienvenido a Xipermine. Este servidor ofrece una experiencia survival mejorada con sistemas únicos de economía, comercio y progresión. Aquí aprenderás lo básico para empezar rápidamente.</p>
+  <p>Bienvenido a Xipermine. Aquí podrás progresar completando misiones, trabajando, comerciando y explorando distintas zonas del servidor. Sigue esta guía para empezar correctamente.</p>
+
+  <h3>🎯 Misiones</h3>
+  <div class="command">/quests - Abre el menú de misiones</div>
+  <div class="command">Completa misiones para ganar recompensas, dinero y progresar más rápido.</div>
+
+  <h3>💼 Trabajos</h3>
+  <div class="command">/jobs join - Únete a un trabajo</div>
+  <div class="command">Gana dinero minando, construyendo o cazando mobs.</div>
 
   <h3>🚀 Teletransportes</h3>
-  <div class="command">/spawn - Te lleva al spawn principal</div>
-  <div class="command">/home - Regresa a tu casa</div>
-  <div class="command">/sethome - Guarda tu casa</div>
-  <div class="command">/tpa jugador - Teletransporte a otros</div>
-  <div class="command">/tpaccept - Acepta teleport</div>
+  <div class="command">/spawn - Ir al spawn</div>
+  <div class="command">/home - Volver a tu casa</div>
+  <div class="command">/sethome - Guardar tu casa</div>
+  <div class="command">/tpa jugador - Teletransportarte a otro jugador</div>
+  <div class="command">/tpaccept - Aceptar solicitud</div>
 
   <h3>💱 Comercio</h3>
-  <div class="command">/trade jugador - Intercambia objetos de forma segura</div>
+  <div class="command">/trade jugador - Intercambiar objetos de forma segura</div>
+
+  <h3>🏪 Warps del servidor</h3>
+  <div class="command">/warp minapvp - Zona de minería PvP</div>
+  <div class="command">/warp arenapvp - Arena PvP</div>
+  <div class="command">/warp tradeos - Zona de comercio</div>
+  <div class="command">/warp afk - Zona AFK</div>
+  <div class="command">/warp tops - Rankings del servidor</div>
 
   <h3>🏪 Player Warps</h3>
-  <div class="command">/pwarp create nombre - Crea tu warp</div>
-  <div class="command">/pwarp - Explora warps públicos</div>
+  <div class="command">/pwarp create nombre - Crear warp</div>
+  <div class="command">/pwarp - Ver warps de jugadores</div>
 
   <h3>💰 Economía</h3>
-  <div class="command">/balance - Consulta tu dinero</div>
-  <div class="command">/pay jugador cantidad - Envía dinero</div>
+  <div class="command">/balance - Ver dinero</div>
+  <div class="command">/pay jugador cantidad - Enviar dinero</div>
+
 </div>
 
 <div id="toast" style="position:fixed;bottom:20px;right:20px;background:#020617;border:1px solid #facc15;color:white;padding:15px 20px;border-radius:10px;opacity:0;transition:0.3s;">
@@ -196,8 +209,6 @@ function copyIP(ip) {
   toast.style.opacity = "1";
   setTimeout(() => toast.style.opacity = "0", 2500);
 }
-
-
 </script>
 
 </body>
