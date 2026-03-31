@@ -33,14 +33,21 @@ header {
 }
 
 .top-buttons a {
-  background: linear-gradient(135deg,#facc15,#eab308);
-  color: black;
-  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #5865F2;
+  color: white;
+  padding: 10px 16px;
   border-radius: 12px;
   text-decoration: none;
   font-weight: bold;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
   transition: 0.2s;
+}
+
+.top-buttons a.tienda {
+  background: linear-gradient(135deg,#facc15,#eab308);
+  color: black;
 }
 
 .top-buttons a:hover {
@@ -49,7 +56,6 @@ header {
 
 .logo {
   width: 170px;
-  filter: drop-shadow(0 0 15px rgba(250,204,21,0.6));
 }
 
 h1 {
@@ -69,13 +75,7 @@ h1 {
   border: 2px solid #facc15;
   border-radius: 20px;
   padding: 30px;
-}
-
-.ip-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
+  position: relative;
 }
 
 .ip {
@@ -83,18 +83,19 @@ h1 {
   font-weight: 600;
 }
 
-.copy-box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.copy-side {
+  position: absolute;
+  right: -120px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 button.copy {
   border: 2px solid #facc15;
-  background: transparent;
+  background: #020617;
   color: #facc15;
-  padding: 8px 15px;
-  border-radius: 10px;
+  padding: 10px 18px;
+  border-radius: 12px;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -133,8 +134,19 @@ button.copy:hover {
 <header>
 
   <div class="top-buttons">
-    <a href="https://discord.gg/28N6Ya8JSR" target="_blank">💬 Discord</a>
-    <a href="https://tienda.xipermine.lat" target="_blank">🛒 Tienda</a>
+    <a href="https://discord.gg/28N6Ya8JSR" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 127.14 96.36" fill="white">
+        <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36a77.7,77.7,0,0,0,6.61-10.94,68.42,68.42,0,0,1-10.42-5l2.48-1.86A75.36,75.36,0,0,0,63.57,84a75.36,75.36,0,0,0,32.19-5.46l2.48,1.86a68.68,68.68,0,0,1-10.45,5,77.3,77.3,0,0,0,6.61,10.92,105.25,105.25,0,0,0,32.19-16.14C130.73,60.29,124.58,36.54,107.7,8.07ZM42.45,65.69c-6.28,0-11.43-5.93-11.43-13.25S36,39.19,42.45,39.19s11.49,5.93,11.43,13.25C53.88,59.76,48.73,65.69,42.45,65.69Zm42.24,0c-6.28,0-11.43-5.93-11.43-13.25s5.15-13.25,11.43-13.25S96.18,45.12,96.12,52.44C96.12,59.76,90.97,65.69,84.69,65.69Z"/>
+      </svg>
+      Discord
+    </a>
+
+    <a class="tienda" href="https://tienda.xipermine.lat" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="black">
+        <path d="M7 4h-2l-1 2v2h2l3.6 7.59-1.35 2.44A2 2 0 0 0 10 22h9v-2h-8.42a.25.25 0 0 1-.22-.37L11.1 17h5.45a2 2 0 0 0 1.79-1.11l3.58-7.16A1 1 0 0 0 21 7H6.21l-.94-2z"/>
+      </svg>
+      Tienda
+    </a>
   </div>
 
   <img src="logoxipermine.png" class="logo">
@@ -146,11 +158,10 @@ button.copy:hover {
 
     <p>Java Edition</p>
 
-    <div class="ip-row">
-      <div class="ip">mc.xipermine.lat</div>
-      <div class="copy-box">
-        <button class="copy" onclick="copyIP('mc.xipermine.lat')">Copiar IP</button>
-      </div>
+    <div class="ip">mc.xipermine.lat</div>
+
+    <div class="copy-side">
+      <button class="copy" onclick="copyIP('mc.xipermine.lat')">Copiar IP</button>
     </div>
 
   </div>
@@ -160,40 +171,24 @@ button.copy:hover {
 <div class="section">
   <h2>📘 Tutorial</h2>
 
-  <p>Bienvenido a Xipermine. Aquí podrás progresar completando misiones, trabajando, comerciando y explorando distintas zonas del servidor. Sigue esta guía para empezar correctamente.</p>
+  <p>Bienvenido a Xipermine. Aquí podrás progresar completando misiones, trabajando, comerciando y explorando distintas zonas del servidor.</p>
 
   <h3>🎯 Misiones</h3>
-  <div class="command">/quests - Abre el menú de misiones</div>
-  <div class="command">Completa misiones para ganar recompensas, dinero y progresar más rápido.</div>
+  <div class="command">/quests - Completa misiones para ganar recompensas</div>
 
   <h3>💼 Trabajos</h3>
-  <div class="command">/jobs join - Únete a un trabajo</div>
-  <div class="command">Gana dinero minando, construyendo o cazando mobs.</div>
+  <div class="command">/jobs join - Gana dinero trabajando</div>
 
   <h3>🚀 Teletransportes</h3>
-  <div class="command">/spawn - Ir al spawn</div>
-  <div class="command">/home - Volver a tu casa</div>
-  <div class="command">/sethome - Guardar tu casa</div>
-  <div class="command">/tpa jugador - Teletransportarte a otro jugador</div>
-  <div class="command">/tpaccept - Aceptar solicitud</div>
+  <div class="command">/spawn - Podrás regresar al punto de inicio y explorar lugares importantes del servidor.</div>
+  <div class="command">/home - Volver rápidamente a tu casa desde cualquier lugar.</div>
 
-  <h3>💱 Comercio</h3>
-  <div class="command">/trade jugador - Intercambiar objetos de forma segura</div>
-
-  <h3>🏪 Warps del servidor</h3>
-  <div class="command">/warp minapvp - Zona de minería PvP</div>
-  <div class="command">/warp arenapvp - Arena PvP</div>
-  <div class="command">/warp tradeos - Zona de comercio</div>
-  <div class="command">/warp afk - Zona AFK</div>
-  <div class="command">/warp tops - Rankings del servidor</div>
-
-  <h3>🏪 Player Warps</h3>
-  <div class="command">/pwarp create nombre - Crear warp</div>
-  <div class="command">/pwarp - Ver warps de jugadores</div>
-
-  <h3>💰 Economía</h3>
-  <div class="command">/balance - Ver dinero</div>
-  <div class="command">/pay jugador cantidad - Enviar dinero</div>
+  <h3>🏪 Warps</h3>
+  <div class="command">/warp minapvp - Llegarás a una zona minera con recursos OP, pero cuidado... aquí las peleas son constantes y siempre hay competencia por los mejores minerales.</div>
+  <div class="command">/warp arenapvp - Zona dedicada al combate entre jugadores, perfecta para demostrar tu habilidad en PvP.</div>
+  <div class="command">/warp tradeos - Área segura donde podrás comerciar con otros jugadores sin riesgos.</div>
+  <div class="command">/warp afk - Lugar ideal para permanecer AFK y generar recompensas mientras no estás activo.</div>
+  <div class="command">/warp tops - Consulta los rankings del servidor y compite por estar en la cima.</div>
 
 </div>
 
